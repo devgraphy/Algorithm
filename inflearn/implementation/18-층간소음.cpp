@@ -13,13 +13,12 @@ int main(){
             cnt++;
             //cout << cnt << " ";
         }
-        else{
-            if(max < cnt){
-                max = cnt;
-                cout << max << " ";
-            }
-            cnt = 0;
+        if(max < cnt){
+            max = cnt;
+            //cout << max << " ";
         }
+        if(temp <= m)
+            cnt = 0;
     }
     if(max > 0)
         cout << max;
