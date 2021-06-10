@@ -1,27 +1,24 @@
-// 특정일에 대해 for loop 계산->nested loop: o((n-k+1)*k)
+// 입력과 동시에 sliding window 계산: o(n+n)
 // 입력 n:10만, k:n
-// 10만, 구간 1일 - 10만
-// 10만, 구간 10일 - (10만-10)*10: 100만
-// 10만, 구간 1000일 - (10만-1000)*1000: 1억 => time limit exceeded!
 #include <iostream>
 using namespace std;
 int a[100001];
 int main(){
     int n, k;
     int max = -2147000000;
-    int temp = 0;
+    int window = 0;
     cin >> n >> k;
-    for(int i = 0; i < n;i++){
+    for(int i = 1; i <= n; i++){
         cin >> a[i];
     }
-    for(int i = 0; i <= n-k; i++){
-        temp = 0;
-        for(int j = 0; j < k; j++){
-            temp+=a[i+j];
+    for(int i = 1; i <= n; i++){     // 0부터 할 경우, max와 비교 시점에 문제 발생
+        if(i < k)
+            window+=a[i];
+        else{   // k와 같거나 커지면... 같을 때부터 max와 비교해야함
+            window+=(a[i]-a[i-k]);
+            if(max < window)
+                max = window;
         }
-        if(max < temp)
-            max = temp;
     }
-    cout << max;
-    
+    cout << max;  
 }
