@@ -12,23 +12,28 @@ int main(){
     cin >> str1 >> str2;
     if(str1.length() != str2.length()){ // 길이 다르면
         cout << "NO";
+        return 0;
     }
-    else{                               // 길이 같으면
-        for(int i = 0; i < str1.length(); i++){ // 요소 파악
-            a[str1[i]] += 1;
-            b[str2[i]] += 1;
+    for(int i = 0; i < str1.length(); i++){
+        if(str1[i]>=65 && str1[i]<=90){
+            a[str1[i]-65]++;
         }
-
-        for(auto it = a.begin(); it != a.end(); it++){
-            if(it->second != b[it->first]){
-                chk = 1;
-                cout << "NO";
-                return 0;
-            }
+        else{
+            a[str1[i]-71]++;
         }
-        if(chk == 0){
-            cout << "YES";
+        if(str2[i]>=65 && str2[i]<=90){
+            b[str2[i]-65]++;
+        }
+        else{
+            b[str2[i]-71]++;
         }
     }
+    for(int i = 0; i < 52; i++){
+        if(a[i] != b[i]){
+            cout << "NO";
+            return 0;
+        }
+    }
+    cout << "YES";
 
 }
