@@ -14,7 +14,7 @@ int main(){
         cout << "NO";
         return 0;
     }
-    for(int i = 0; i < str1.length(); i++){
+    for(int i = 0; i < str1[i] != '\0'; i++){
         if(str1[i]>=65 && str1[i]<=90){
             a[str1[i]-65]++;
         }
