@@ -10,7 +10,7 @@ int main(){
     int chk = 1;
     for(int i = 2; i <= n; i++){
         chk = 0;
-        for(int j = 2; j <= (i/2); j++ ){
+        for(int j = 2; j*j <= i; j++ ){
             if( i % j == 0){
                 chk = 1;
                 break;
