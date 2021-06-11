@@ -14,7 +14,7 @@ int main(){
         cin >> a[i];
     }
     for(int i = 0 ; i < n-1; i++){
-        for(int j = 0; j < n-1; j++){
+        for(int j = 0; j < n-i-1; j++){
             if(a[j] > 0 && a[j+1] < 0){
                 temp = a[j+1];
                 a[j+1] = a[j];
