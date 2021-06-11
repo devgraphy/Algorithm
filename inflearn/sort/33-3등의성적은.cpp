@@ -1,5 +1,4 @@
 // 선택정렬(bruteforce): 최악, 평균, 최선 모두 O(n^2) 
-// wrong answer
 #include <iostream>
 using namespace std;
 int a[101];
