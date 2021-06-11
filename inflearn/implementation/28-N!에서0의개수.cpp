@@ -10,16 +10,17 @@ int main(){
     cin >> n;
     for(int i = 2; i <= n; i++){
         temp = i;
-        cout << temp << endl;
         while( temp > 0 ){
             if(temp % 2 == 0){
                 cnt2++;
                 temp/=2;
             }
-            if(temp % 5 == 0){
+            else if(temp % 5 == 0){ // 모든 2의 배수는 temp가 0으로 끝나는데, 마지막에 0도 5에서 추가해주게 되므로 else 처리
                 cnt5++;
                 temp/=5;
             }
+            else                    // 2와 5에서 나누어 떨어지지 않는 경우 무한 루프 발생, 이 경우 루프 탈출
+                break;
         }
     }
     res = min(cnt2, cnt5);
