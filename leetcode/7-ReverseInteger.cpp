@@ -2,21 +2,20 @@
 // Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
 // Constraints: -2^31 <= x <= 2^31 - 1
 // ---------------------------------------------------------------------------------
-// Line 12: signed integer overflow
+// exception occurred
 class Solution {
 public:
     int reverse(int x) {
-        int tmp = abs(x);
+        int tmp = x;
         int res = 0;
-        while(tmp > 0){
-            if(res*10 + tmp%10 > pow(2,sizeof(x)*8-1)-1)
+        while(tmp != 0){    // 음수도 처리하기 위해서 not equal 연산을 사용해야 한다.
+            if(res > INT_MAX/10||(res == INT_MAX/10 && tmp%10 > 7))
+                return 0;
+            if(res < INT_MIN/10||(res == INT_MIN/10 && tmp%10 < -8))
                 return 0;
             res = res*10 + tmp%10;
             tmp/=10;
         }
-        if(x > 0)
-            return res;
-        else
-            return -1 * res;
+        return res;
     }
 };
