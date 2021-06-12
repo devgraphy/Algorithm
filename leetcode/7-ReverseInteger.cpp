@@ -9,6 +9,8 @@ public:
         int tmp = abs(x);
         int res = 0;
         while(tmp > 0){
+            if(res*10 + tmp%10 > pow(2,sizeof(x)*8-1)-1)
+                return 0;
             res = res*10 + tmp%10;
             tmp/=10;
         }
