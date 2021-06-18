@@ -1,4 +1,5 @@
-// 선택정렬(bruteforce): 최악, 평균, 최선 모두 O(n^2) 
+// 선택정렬(bruteforce): 매번 가장 큰 값을 차례대로 갖다 놓기-최악, 평균, 최선 모두 O(n^2)
+ 
 #include <iostream>
 using namespace std;
 int a[101];
