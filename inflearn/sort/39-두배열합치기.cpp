@@ -11,6 +11,7 @@ method2. (단, 두 배열 모두 INT_MAX로 초기화해주어야 함)
         각 배열의 포인터 값을 비교해서 출력
 */
 #include <iostream>
+#include <climits>
 using namespace std;
 int a[101];
 int b[101];
@@ -18,24 +19,19 @@ int main(){
     int na, nb;
     int pos_a = 0, pos_b = 0;
     cin >> na;
+    fill_n(a,101,INT_MAX);
     for(int i = 0; i < na; i++){
         cin >> a[i];
     }
     cin >> nb;
+    fill_n(b,101,INT_MAX);
     for(int i = 0; i < nb; i++){
         cin >> b[i];
     }
-    while(pos_a < na && pos_b < nb){
+    while(pos_a < na || pos_b < nb){
         if(a[pos_a] >= b[pos_b])
             cout << b[pos_b++] << " ";
         else
             cout << a[pos_a++] << " ";
-    }
-    while(pos_a < na){
-        cout << a[pos_a++] << " ";
-    }
-    while(pos_b < nb){
-        cout << b[pos_b++] << " ";
-    }
-    
+    }    
 }
