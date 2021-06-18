@@ -18,14 +18,14 @@ int main(){
         cin >> a[i];
     }
     sort(a, a+n);
-    while(pre != post){
+    while(pre <= post){         
         mid = (pre + post)/2;
         if(m == a[mid]){
             cout << mid + 1;
             return 0;
         }
         else if(m > a[mid])    pre = mid+1;
-        else    post = mid;
+        else    post = mid; // mid-1 도 가능
     }
 
 }
