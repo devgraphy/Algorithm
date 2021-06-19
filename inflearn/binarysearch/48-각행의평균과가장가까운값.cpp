@@ -11,7 +11,7 @@
 using namespace std;
 int a[10][10];
 int main(){
-    float sum = 0;  // 피연산자의 자료형은 연산 결과에 영향을 준다.
+    int sum = 0;  // 피연산자의 자료형은 연산 결과에 영향을 준다.
     int avg = 0;
     int mindifelem = INT_MAX;
     for(int i = 0; i < 9; i++){     // 격자판 입력
@@ -25,7 +25,7 @@ int main(){
         for(int j = 0; j < 9; j++){
             sum+=a[i][j];
         }
-        avg = round(sum / 9);
+        avg = sum / 9.0 + 0.5;
         cout << avg << " ";
         for(int j = 0; j < 9; j++){
             if(abs(avg-mindifelem) > abs(avg-a[i][j]))
