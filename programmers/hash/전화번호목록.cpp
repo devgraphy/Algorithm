@@ -3,43 +3,30 @@
 입력: 1<=phone_book<=1,000,000 / 1<=전화번호 길이<=20 / 전화번호 중복x
 출력: 접두어 여부
 알고리즘(2for - bruteforce):O(n^2) - 시간 초과!
+--------------------<Improve time complexity>--------------------
+알고리즘(문자열 배열의 정렬은 사전식 나열임을 이용):O(n)
 */
 /* 채점 결과
 정확성: 83.3
-효율성: 8.3
-합계: 91.7 / 100.0
+효율성: 16.7
+합계: 100.0 / 100.0
 */
 #include <string>
 #include <vector>
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 bool solution(vector<string> phone_book) {
     bool answer = true;
     int sz = phone_book.size();
     int subsz;
+    sort(phone_book.begin(),phone_book.end());
     for(int i = 0; i < sz-1; i++){
-        for(int j = i+1; j < sz; j++){
-            if(phone_book[i].length() > phone_book[j].length()){
-                subsz = phone_book[j].length();
-                if(phone_book[i].substr(0,subsz) == phone_book[j])
-                    answer = false;
-            }
-            else if(phone_book[i].length() < phone_book[j].length()){
-                subsz = phone_book[i].length();
-                if(phone_book[j].substr(0,subsz) == phone_book[i])
-                    answer = false;   
-            }
-            else{
-                if(phone_book[j] == phone_book[i])
-                    answer = false;
-            }
-            if(answer==false)
-                break;
-        }
-        if(answer==false)
-                break;
+        subsz = phone_book[i].length();
+        if(phone_book[i] == phone_book[i+1].substr(0,subsz))
+            return false;
     }
     return answer;
 }
