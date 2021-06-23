@@ -26,7 +26,7 @@ int solution(string s) {
         while(st.size() !=0){st.pop();} // stack 비우기
         for(int j = i; j < i+len; j++){ // 시작 pos부터 정해진 길이까지 올바른 괄호 문자열 확인
             if(s[j]==')' || s[j]=='}' || s[j]==']'){    // 닫히면
-                if(st.size() < 0){
+                if(st.size() <= 0){
                     chk = true;
                     break;
                 }
@@ -67,7 +67,7 @@ int solution(string s) {
         }   
         if(chk == false && st.size()==0)
             answer++;
-        s[i+len] = s[i];    // 회전
+        s += s[i];    // 회전
     }
     return answer;
 }
