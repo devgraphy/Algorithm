@@ -5,7 +5,6 @@
 알고리즘:O(n^2)
 문자 하나씩 뒤로 옮겨가면서 올바른 괄호 문자열인지 확인한다.
 for i가 시작 위치를 가리키고 정해진 문자 길이동안 확인한다. 
-입력 문자열의 길이는 최대 1000이기 때문에 회전길이까지 포함하여 2000개 이상으로 정의한다.
 */
 #include <string>
 #include <vector>
@@ -14,7 +13,6 @@ for i가 시작 위치를 가리키고 정해진 문자 길이동안 확인한�
 #include <stack>
 
 using namespace std;
-char a[2005];
 int solution(string s) {
     stack<char> st;
     int answer = 0;
