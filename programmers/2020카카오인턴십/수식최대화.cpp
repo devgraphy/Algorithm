@@ -43,10 +43,10 @@ long long solution(string expression) {
     string temp;
     // 피연산자와 연산자 추출
     for(int i = 0; i < expression.length();i++){
-        if(expression[i] >= '0' && expression[i] <='9'){
+        if(expression[i] >= '0' && expression[i] <='9'){    // 피연산자
             temp+=expression[i];
         }
-        else{
+        else{                                               // 연산자
             base_operator.push_back(expression[i]);
             base_operand.push_back(stoll(temp));
             temp="";
@@ -63,11 +63,11 @@ long long solution(string expression) {
         for(int i = 0; i < perm.size();i++){
             for(int j = 0; j < temp_operator.size();){
                 if(temp_operator[j] == op[perm[i]]){
-                    res = (temp_operand[j], temp_operand[j+1], op[perm[i]]);
-                    temp_operator.erase(temp_operator.begin()+j);
-                    temp_operand.erase(temp_operand.begin()+j);
-                    temp_operand.erase(temp_operand.begin()+j+1);
-                    temp_operand.insert(temp_operand.begin()+j,res);
+                    res = calc(temp_operand[j], temp_operand[j+1], op[perm[i]]);    // 연산자의 개수와 피연산자의 개수가 하나 차이남을 이용
+                    temp_operator.erase(temp_operator.begin()+j);   // 연산에 사용된 연산자 vector에서 제거
+                    temp_operand.erase(temp_operand.begin()+j);     // 연산에 사용된 피연산자 vector에서 제거
+                    temp_operand.erase(temp_operand.begin()+j);   // 피연산자 하나가 삭제되었으므로 그다음 지워야할 피연산자의 인덱스도 j임에 주의
+                    temp_operand.insert(temp_operand.begin()+j,res);// 연산된 결과값 vector에 삽입
                 }
                 else
                     j++;
