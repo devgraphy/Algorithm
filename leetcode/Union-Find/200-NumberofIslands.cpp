@@ -20,8 +20,17 @@ main 함수
         방문하지 않았으면
             체크
             recur
-*/
 
+Runtime: 12 ms, faster than 94.45% of C++ online submissions for Number of Islands.
+Memory Usage: 9.9 MB, less than 34.65% of C++ online submissions for Number of Islands.
+*/
+/* ----------<공간개선 알고리즘>----------
+땅 1을 방문하면 물 0으로 바꿔나간다.
+이로써 기존의 chk 추가 배열이 필요없다.
+
+Runtime: 12 ms, faster than 94.45% of C++ online submissions for Number of Islands.
+Memory Usage: 9.4 MB, less than 87.62% of C++ online submissions for Number of Islands.
+*/
 class Solution {
 public:
     int dx[4] = {1, 0, -1, 0};
@@ -33,9 +42,9 @@ public:
     void dfs(int x, int y, vector<vector<char>>& grid){
         for(int i = 0; i < 4; i++){
             if(x+dx[i] >= 0 && y+dy[i] >= 0 && x+dx[i] < row && y+dy[i] < col){
-                if(grid[x+dx[i]][y+dy[i]] != '1' || chk[x+dx[i]][y+dy[i]] != 0)
+                if(grid[x+dx[i]][y+dy[i]] != '1')
                     continue;
-                chk[x+dx[i]][y+dy[i]] = 1;
+                grid[x+dx[i]][y+dy[i]] = 0;
                 dfs(x+dx[i],y+dy[i],grid);
             }
         }
@@ -47,8 +56,8 @@ public:
         for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
                 
-                if(grid[i][j] == '1' && chk[i][j] == 0){
-                    chk[i][j] = 1;
+                if(grid[i][j] == '1'){
+                    grid[i][j] = 0;
                     dfs(i, j, grid);
                     cnt++;
                 }
