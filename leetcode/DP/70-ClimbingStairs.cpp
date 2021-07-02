@@ -3,7 +3,7 @@
 입력: 1<=n<=45
 출력: 방법 수
 */
-/* ----------<알고리즘>----------
+/* ----------<알고리즘:o(n^2)>----------
 1과 2의 조합.
 1+1+...+1
 1+1+...+2
@@ -17,22 +17,25 @@
 트리 노드의 개수의 개수는 2^n이다.
 따라서, 시간 복잡도는 o(2^n)이다.
 */
+/* ----------<유사 알고리즘:o(n^2)>----------
+return을 이용한 recursive bruteforce
+
+return값을 이용해서 recursion bruteforce를 구현할 수 있다.
+이때는 최종 목적지에서 역으로 계산해 온다.
+즉, 목적지3의 2로부터 오는 방법 수는 하나. 목적지3의 1로부터 오는 방법 수는 하나
+n과 딱 맞아떨어질 때 1 반환, 초과하면 0 반환
+*/
 
 class Solution {
 public:
-    int cnt = 0;
-    void dfs(int a, int n){
-        if(a == n){
-            cnt++;
-            return;
-        }
-        if(a+1 <= n)
-            dfs(a+1,n);
-        if(a+2 <= n)
-            dfs(a+2,n);
+    int dfs(int i, int n){
+        if(i > n)
+            return 0;
+        else if(i == n)
+            return 1;
+        return dfs(i+1, n) + dfs(i+2, n);
     }
     int climbStairs(int n) {
-        dfs(0, n);
-        return cnt;
+        return dfs(0,n);
     }
 };
