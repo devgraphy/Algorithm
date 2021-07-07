@@ -11,6 +11,10 @@ popMax(): 최댓값을 찾아 그 원소만 빼고 다시 원래의 스택에 �
     Input: ["MaxStack","push","push","popMax","peekMax"] [[],[5],[1],[],[]]
     Output: [null,null,null,5,5]
     Expected: [null,null,null,5,1]
+    => 삭제된 원소 위로 최댓값이 갱신되지 않았다.
+    
+    peekMax: popMax로 최댓값이 사라졌을 경우에 peekMax의 값도 바뀐다.
+    제거된 원소 바로 아래 원소의 최댓값 정보와 그 제거된 원소 위에 쌓이는 원소들의 값을 비교해서 원래 스택에 넣는다.
 */
 class MaxStack {
 public:
@@ -48,7 +52,7 @@ public:
     
     int popMax() {  
         int maxval = st.top().second;
-        while(!st.empty()){         // 최댓값 찾을 때까지 다른 스택에 복사
+        while(!st.empty()){
             if(st.top().first != maxval){
                 temp_st.push(make_pair(st.top().first,st.top().second));
                 st.pop();       
@@ -58,8 +62,17 @@ public:
                 break;  // 동일한 최댓값 모두 pop하는 것을 방지
             }
         }
-        while(!temp_st.empty()){    // 다시 원래 스택으로 그대로 복사
-            st.push(make_pair(temp_st.top().first, temp_st.top().second));
+        while(!temp_st.empty()){
+                if(st.empty()){ // 원래 스택이 비어있을 땐, 새로 쌓이는 것과 같으므로 동일하게 초기화
+                    st.push(make_pair(temp_st.top().first, temp_st.top().first));
+
+                }
+                else{           // 기존 스택과 비교하며 쌓아간다.
+                    if(temp_st.top().first > st.top().second)
+                        st.push(make_pair(temp_st.top().first, temp_st.top().first));
+                    else
+                        st.push(make_pair(temp_st.top().first, st.top().second));
+            }           
             temp_st.pop();
         }
         return maxval;
