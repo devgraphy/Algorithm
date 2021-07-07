@@ -45,7 +45,7 @@ int solution(vector<vector<int>> jobs) {
     sort(jobs.begin(), jobs.end()); 
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq; 
     int i = 0, finish_time = 0, process_time = 0;
-    while(i <= jobs.size() || !pq.empty()){
+    while(i < jobs.size() || !pq.empty()){  // i가 jobs.size()와 계속 같은 상태로 유지하기 때문에 등호가 들어가면 항상 참이 된다.
         // 경계값 분석 -> 아래 조건 확인하는 과정에서 잘못된 접근을 하므로 i에 대한 처리를 해줘야 한다.
         if(i < jobs.size() && finish_time >= jobs[i][0]){
             pq.push(make_pair(jobs[i][1], jobs[i][0]));
