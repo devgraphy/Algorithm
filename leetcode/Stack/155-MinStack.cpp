@@ -36,7 +36,9 @@ top().second에서는 매 push마다 최솟값 정보를 가지도록 한다.
 각 원소마다 최솟값이 달라질 수 있음. ->각 원소에 대해서 최솟값 정보를 가지도록 한다.
 최솟값 비교는 top 정보와 비교한다. 왜냐하면 pop 후 push하는 경우에 대해서 최솟값을 동적으로 활용할 수 있어야 하기 때문이다. 
 */
-
+/* ----------<새롭게 안 것>----------
+pair 타입 stack 정의 방법: stack<int, int> (X) -> stack<pair<int,int>>
+*/
 class MinStack {
 public:
     /** initialize your data structure here. */
@@ -49,7 +51,7 @@ public:
             st.push(make_pair(val,val));   
         }
         else{
-            if(st.top().second > val)
+            if(st.top().second > val)   //st.top().second : 현재까지의 최솟값 정보
                 st.push(make_pair(val, val));
             else
                 st.push(make_pair(val,st.top().second));
