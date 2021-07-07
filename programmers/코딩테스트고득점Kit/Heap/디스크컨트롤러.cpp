@@ -19,8 +19,9 @@ job 순회와 pq에서 꺼내는 시점을 정하는게 관건
         pq.push(jobs[i++]);
         continue;
     3. if - pq가 empty가 아니면 현재 진행할 작업(pq.top()) 에 대해 시간을 계산해준다.
-        finish_time
+        (*시간 계산 순서 중요-process_time에서 finish_time을 사용하는데 이전 작업의 finish_time으로 계산해야 한다.)
         process_time
+        finish_time
         pq.pop()
     4. else - empty면 바로 다음 작업을 넣어준다.
         현재 작업을 pq에 추가
@@ -55,8 +56,8 @@ int solution(vector<vector<int>> jobs) {
         if(i < jobs.size() && pq.empty())
             pq.push(make_pair(jobs[i][1], jobs[i][0]));
         else{
-            finish_time += pq.top().first;
             process_time += (finish_time-pq.top().second)+pq.top().first;
+            finish_time += pq.top().first;
             pq.pop();
         }
     }
