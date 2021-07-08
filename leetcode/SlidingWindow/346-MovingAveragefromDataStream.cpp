@@ -37,25 +37,33 @@ math
 Runtime: 20 ms, faster than 88.73% of C++ online submissions for Moving Average from Data Stream.
 Memory Usage: 14 MB, less than 14.78% of C++ online submissions for Moving Average from Data Stream.
 */
+/* -----<리팩토링>-----
+window 사이즈가 어떻든 각 경우에 대해서는 sum 계산만 하고
+return 시 평균구할 때 window 크기를 비교하여 처리하는 것을 통해 공통적으로 처리해준다.
+
+Runtime: 12 ms, faster than 99.76% of C++ online submissions for Moving Average from Data Stream.
+Memory Usage: 13.9 MB, less than 56.33% of C++ online submissions for Moving Average from Data Stream.
+*/
 class MovingAverage {
 public:
     /** Initialize your data structure here. */
     int winsize;
     vector<int> a;
-    double sum = 0;
+    int sum = 0;
+    int asize;
     MovingAverage(int size) {
         winsize = size;
     }
 
     double next(int val) {
         a.push_back(val);
+        asize = a.size();
         if(a.size() > winsize){ // window 크기보다 크면 기존 원소 하나를 버린다.
             sum += a[a.size()-1] - a[a.size()-winsize-1];
-            return sum / winsize;
         }
         else{   // 작거나 같으면 sum에 새로운 val을 추가하여 계산한다.
             sum+=a[a.size()-1];
-            return sum / a.size();
         }
+        return sum*1.0 / min(winsize,asize);
     }
 };
