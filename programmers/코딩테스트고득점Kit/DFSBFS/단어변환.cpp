@@ -33,6 +33,8 @@ using namespace std;
 int visit[55];
 int minval = INT_MAX;
 void dfs(int num, string begin, string target, vector<string> &words){
+    if(minval <= num)   // 현재 구한 최소 depth보다 깊이 들어가지 않는다.
+        return;
     if(begin == target){
         if(minval > num)
             minval = num;
