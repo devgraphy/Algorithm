@@ -1,4 +1,4 @@
-/* -----<문제 정의>-----
+/* ----------<문제 정의>----------
 문제:문자 재정의
 입력:문자열
 출력:크로아티아 알파벳 개수
@@ -18,59 +18,34 @@
     정확히 일치하면 cnt 1증가, 해당 문자열 길이만큼 포인터 증가
     일치하지 않으면 cnt 1증가, 포인터 1증가
 일치하지 않으면 cnt 1증가, 포인터 1증가
+*/
+/* ----------<알고리즘>----------
+find, replace
 
-
-
+문자열에서 원하는 문자열을 찾기 위해 find 사용
+문자 재정의를 위해 replace 사용
+*/
+/* -----<새롭게 안 것>-----
+find를 통해 못 찾은 반환값은 -1이다.
+조건문은 반환값이 -1 이나 string::pos 와 같은지로 구성할 수 있다.
 */
 #include <iostream>
 #include <vector>
 #include <string>
 using namespace std;
-
-vector<string> tf[30];
+vector<string> croa[30];
 int main(){
-    // a는 ascii 코드로 97
-    tf['c'-97].push_back("c=");
-    tf['c'-97].push_back("c-");
-    tf['d'-97].push_back("dz=");
-    tf['d'-97].push_back("d-");
-    tf['l'-97].push_back("lj");
-    tf['n'-97].push_back("nj");
-    tf['s'-97].push_back("s=");
-    tf['z'-97].push_back("z=");
-    string temp;
-    int cnt = 0;
-    int p = 0;      // 포인터
-    int chk = 0;
-    cin >> temp;    // 문자열 입력
-    // 
-    while(p < temp.length()){
-        // 가리키는 문자에 대해 변환된 크로아티아 알파벳이 존재하면
-        //cout<< p << endl;
-        chk = 0;
-        if(tf[temp[p]-97].size()>0){
-            //cout << temp[p]-97 << endl;
-            for(int i = 0; i < tf[temp[p]-97].size(); i++){
-                if(temp.substr(p, tf[temp[p]-97][i].length()) == tf[temp[p]-97][i]){
-                    //cout << tf[temp[p]-97][i] << endl;
-                    cnt++;
-                    p+=tf[temp[p]-97][i].length();
-                    chk = 1;
-                }
-            }
-            // tf에 시작 문자가 존재는 하지만 정확히 일치하지 않는 경우
-            if(chk == 0){
-                cnt++;
-                p++;
-            }
-        }
-        // tf에 시작 문자가 존재도 안 하는 경우
-        else{   
-            cnt++;
-            p++;
+    vector<string> croa={"c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="};  // 벡터 초기화
+    string str;
+    cin >> str;
+    int p = 0;
+    for(int i = 0; i < croa.size(); i++){
+        while(1){
+            p = str.find(croa[i]);
+            if(p == string::npos)
+                break;
+            str.replace(p, croa[i].length(),"#");
         }
     }
-    cout << cnt << endl;
-    //cout << p << endl;
-    //cout << tf['c'-97].size() << endl;
+    cout << str.length();
 }
