@@ -31,6 +31,7 @@ int main(){
     // 케이스별
     for(int i = 0; i < n; i++){
         getline(cin, str);
+        str+=' ';
         int strlen = str.length();
         // 문자열 순회
         for(int j = 0; j < strlen; j++){
@@ -46,10 +47,6 @@ int main(){
             else{
                 st.push(str[j]);
             }
-        }
-        while(st.size()){
-            cout << st.top();
-            st.pop();
         }
         cout << endl;
     }
