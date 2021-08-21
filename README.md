@@ -1,4 +1,23 @@
-Description of Commit Message
+## Contents of Source code
+
+<문제정의>
+
+- 문제: 특정 알고리즘, 자료구조가 쓰여야 하는 근거, 핵심 아이디어 서술
+- 입력: 입력 내용 및 제약사항 서술
+- 출력: 출력 내용 및 제약사항 서술
+
+<알고리즘>
+
+- 풀이시간
+- 메모리
+- (실행)시간
+- Pseudo Code
+
+<새롭게 안 것>
+
+- 라이브러리 사용법 등
+
+## Description of Commit Message
 
 - Solve myself(~): 스스로 해결한 알고리즘(접근법)
 - Solve ~: 이전에 발생한 이슈 해결(해결법)
