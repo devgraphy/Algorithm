@@ -20,9 +20,29 @@ string.substr(start pos, 문자 수)
     ☝연결 리스트로 해결할 수 있다.
 */
 /* -----<새롭게 안 것>----
-iterator는 대소 비교연산자를 사용하지 못한다. 등호와 같지 않음 기호만 사용 가능
-list의 insert 메서드는 iterator가 가리키는 이전 원소에 삽입을 한다. (다음 원소x)
+1. iterator는 대소 비교연산자를 사용하지 못한다. 등호와 같지 않음 기호만 사용 가능
+2. list.insert
+    list의 insert 메서드는 iterator가 가리키는 이전에 원소를 삽입한다. (다음 원소x)
     The container is extended by inserting new elements before the element at the specified position.
+3. list.erase
+    iterator가 가리키는 원소를 삭제한다.
+    Removes from the list container either a single element (position) or a range of elements ([first,last)).
+*/
+/* -----<Segmentation Fault>-----
+dmih
+11
+B
+B
+P x
+L
+B
+B
+B
+P y
+
+출력 결과: terminate called recursively
+☝ 현재 cursor가 가리키는 원소를 지웠는데, 그 iterator로 접근하면 문제가 발생한다.
+    따라서 erase 하여 반환된 값(삭제한 바로 다음 원소를 가리키는 iterator)를 다시 cursor에 저장해줘야 한다.
 */
 #include <iostream>
 #include <string>
@@ -31,11 +51,9 @@ using namespace std;
 int main(){
     string str, comm;
     char addchar;
-    list<char> ll(str.begin(), str.end());
     cin >> str;
+    list<char> ll(str.begin(), str.end());  // 연결리스트를 문자열로 초기화
     // 문자열을 연결리스트에 추가
-    for(int i = 0; i < str.length(); i++)
-        ll.push_back(str[i]);
     int n;  // 명령어 수
     auto cursor = ll.end();   // 문자열 끝에서 시작
     cin >> n;
@@ -49,8 +67,8 @@ int main(){
         }
         else if(comm == "B"){
             //erase 메서드 이용. 0부터 시작
-            if(cursor != ll.begin()) {
-                ll.erase(--cursor); // 앞 문자 하나 삭제 되었으므로 커서 1 줄인다.
+            if(cursor != ll.begin()) {          // erase는 iterator가 가리키는 원소를 삭제한다.
+                cursor = ll.erase(--cursor);    // 이전 원소를 제거하기 위해 1 줄인다. 그리고 그 erase 반환값으로 cursor값을 대체한다.
             }
         }
         else if(comm == "P"){
