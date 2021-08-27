@@ -1,12 +1,12 @@
 ## Contents of Issues
 
-- 개선 사항, 아이디어 제안 - enhancement 태그
+- 개선 사항, 아이디어 제안 (enhancement 태그)
   - [문제출처/문제번호/문제이름] 이슈
-- 원리 이해, 궁금한 것, 분석이 필요한 이슈 - analysis 태그
+- 원리 이해, 궁금한 것, 분석이 필요한 이슈 (analysis 태그) -> 정리되면 블로그에 포스팅
   - 이슈
     - 관련 문제
       - [문제출처/문제번호/문제이름] 
-- 관련 문제 정리 - documentation 태그
+- 관련 문제 정리 (documentation 태그)
   - [문제 유형] ~ 관련 문제
     - [핵심 이슈]
       - 문제출처/문제번호/문제이름
@@ -59,10 +59,6 @@
 - Add description: 추가 설명
 
 - Update description: 설명 수정
-
-- ~~Add question~~: 관련 이슈나 알고리즘 개선하기 위해 스스로에게 던지는 질문은 issue 탭에 등록
-
-  - 
 
   
 
