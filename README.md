@@ -58,8 +58,4 @@
 
 - Add description: 추가 설명
 
-- Update description: 설명 수정
-
-  
-
   
