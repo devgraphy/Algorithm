@@ -25,9 +25,9 @@ int sz;
 int maxlen = INT_MIN;
 void countColumnCandy(char (*a)[55]){
     for(int m = 0; m < sz; m++){
-        int templen = 0;
+        int templen = 1;    // 연속 2개가 된다면 이미 한 개는 존재했어야 한다.
         for(int n = 0; n < sz; n++){
-            if(a[m+1][n] != ' '){  // 그 다음이 공백이 아닌 경우
+            if(a[n][m] != ' '){  // 그 다음이 공백이 아닌 경우
                 if(a[n][m] == a[n+1][m]){ // 그 다음 칸과 값이 같다.
                     templen++;
                 }
@@ -77,11 +77,12 @@ int main(){
         }
     }
     // 두 칸 선택
+    countRowCandy(a);
+    countColumnCandy(a);
     for(int i = 0; i < sz; i++){    // 
         for(int j = 0; j < sz-1; j++){
             // 행 단위 두 칸 교환. 행은 sz끝까지 가야함
             if(a[i][j] != a[i][j+1]){
-                //cout << "row " << i << ":" << j<< endl;
                 swap(a[i][j], a[i][j+1]);
                 // 행단위 길이 파악
                 countRowCandy(a);
@@ -95,7 +96,6 @@ int main(){
         for(int j = 0; j < sz-1; j++){
             // 열 단위 두 칸 교환. 행은 sz끝까지 가야함
             if(a[j][i] != a[j+1][i]){
-                //cout << "col " << j << " : " << i<< endl;
                 swap(a[j][i], a[j+1][i]);
                 // 행단위 길이 파악
                 countRowCandy(a);
