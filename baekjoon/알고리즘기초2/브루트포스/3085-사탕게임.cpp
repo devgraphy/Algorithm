@@ -90,11 +90,6 @@ int main(){
                 countColumnCandy(a);
                 swap(a[i][j], a[i][j+1]);
             }  
-        }
-    }
-    for(int i = 0; i < sz; i++){    // 
-        for(int j = 0; j < sz-1; j++){
-            // 열 단위 두 칸 교환. 행은 sz끝까지 가야함
             if(a[j][i] != a[j+1][i]){
                 swap(a[j][i], a[j+1][i]);
                 // 행단위 길이 파악
