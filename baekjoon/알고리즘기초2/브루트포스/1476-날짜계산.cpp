@@ -36,13 +36,10 @@ int main(){
             if(a[1] == 29) a[1] = 1;
             if(a[2] == 20) a[2] = 1;
         }
-        for(int i = 0; i < 3; i++){
-            if(a[i] != b[i]) {
-                comp = true;
-                break;
-            }
+        if(a[0] == b[0] && a[1] == b[1] && a[2] == b[2]){
+            cout << cnt;
+            return 0;
         }
-        if(comp == false) break;
         cnt++;
     }
     cout << cnt;
