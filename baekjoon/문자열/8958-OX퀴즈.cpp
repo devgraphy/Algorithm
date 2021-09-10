@@ -12,9 +12,8 @@ int main(){
         cin >> s;
         for(int j = 0; j < s.length(); j++){
             if(s[j] == 'O'){
-                if(j != 0 && s[j-1] == s[j])
-                    cnt++;
                 result+=cnt;
+                cnt++;
             }
             else cnt = 1;
         }
