@@ -13,12 +13,12 @@ int n, m, v;
 int a[1001][1001];
 int chk[1001];
 void dfs(int v){
+    chk[v] = 1;
+    cout << v << " ";
     for(int i = 1; i <= n; i++){
         if(a[v][i] == 0) continue;  // 연결 정보 확인
-        if(chk[i] == 1) continue;
-        chk[i] = 1;
+        if(chk[i] == 1) continue; 
         // cout << v << " : " << i << endl; // dfs 흐름을 알 수 있는 테스트 코드
-        cout << i << " ";
         dfs(i);
     }
 }
@@ -33,8 +33,6 @@ int main(){
         a[temp1][temp2] = 1;
         a[temp2][temp1] = 1;
     }
-    chk[v] = 1;
-    cout << v << " ";
     dfs(v);
     //bfs(v);
 }
