@@ -15,6 +15,12 @@ dfs(cnt, ch)    // cnt: 채널 이동수, ch: 햔재 채널
     basecase: 목적 채널에 도달
 
 */
+/* -----<무한루프>-----
+초과하는 경우에 대해서 - 처리했기 때문에 무한루프가 절대 발생하지 않는다고 생각->하지만 무한루프 발생
+커지는게 한 없이 커져서 작아지는 속도보다 커지는 속도가 훨씬 큰 경우를 의심해볼 수 있음.
+
+
+*/
 #include <iostream>
 #include <climits>
 using namespace std;
@@ -40,22 +46,30 @@ void dfs(int cnt, int ch){
                     stand = i;
                 }
                 else if(ch*10 + i<= n){               // 목적채널 미달 순간
+                    chk[ch*10+i] = 1;
                     dfs(cnt+1, ch*10+i);
                     break;
                 }    
             }
             if(i == 0 && chk[ch*10+stand] == 0){
                 // 끝까지 else에 걸리지 못한 경우 무조건 한 번은 방문하도록
+                chk[ch*10+stand] = 1;
                 dfs(cnt+1, ch*10+stand);
             }
 
         }
         // +
-        dfs(cnt+1, ch+1);
+        if(chk[ch+1] == 0){
+            chk[ch+1] = 1;
+            dfs(cnt+1, ch+1);
+        }
     }
     else if(ch > n){ //목적 채널 초과-> 세부 조정(버튼 직접 접근은 제외)
         // -
-        dfs(cnt+1, ch-1);
+        if(chk[ch-1]==0){
+            chk[ch-1] = 1;
+            dfs(cnt+1, ch-1);
+        }
     }
 }
 int main(){
