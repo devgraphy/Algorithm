@@ -45,7 +45,7 @@
 
 - Refer to hint(~): 일부 코드 또는 힌트 참고한 알고리즘(접근법)
 
-- Exception: 예외 발생
+- counter examples exist: 반례 존재
 
 - Time limit exceeded(~): 시간 초과(접근법)
 
