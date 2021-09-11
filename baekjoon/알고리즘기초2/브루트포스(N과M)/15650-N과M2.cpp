@@ -25,12 +25,11 @@ main
 using namespace std;
 int n, m;
 int chk[10];
+int comb[10];
 void dfs(int cnt, int idx){
     if(cnt == m){
-        for(int i = 1; i <= n; i++ ){
-            if(chk[i] == 1){
-                cout << i << " ";
-            }
+        for(int i = 0; i < m; i++ ){
+            cout << comb[i] << " ";
         }
         cout << endl;
         return;
@@ -38,6 +37,7 @@ void dfs(int cnt, int idx){
     for(int i = idx; i<=n;i++){
         if(chk[i] == 0){
             chk[i] = 1;
+            comb[cnt] = i;
             dfs(cnt+1, i+1);
             chk[i] = 0;
         }
