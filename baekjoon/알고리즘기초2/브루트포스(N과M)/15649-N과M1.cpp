@@ -19,11 +19,11 @@ dfs 함수(cnt)
 using namespace std;
 int n, m;
 int chk[10];
+int perm[10];
 void dfs(int cnt){
     if(cnt == m){
-        for(int i = 1; i <= n; i++){
-            if(chk[i] == 1)
-                cout << i << " ";
+        for(int i = 0; i < m; i++){  
+            cout << perm[i] << " ";
         }
         cout << '\n';
         return;
@@ -31,6 +31,8 @@ void dfs(int cnt){
     for(int i = 1; i <= n; i++){
         if(chk[i] == 0){
             chk[i] = 1;
+            //cout << cnt << ":"<< i << endl;
+            perm[cnt] = i;
             dfs(cnt + 1);
             chk[i] = 0;
         }
