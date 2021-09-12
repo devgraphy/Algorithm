@@ -7,16 +7,13 @@ dfs bruteforce, for-idx, visit check
 dfs(cnt, idx)
     cnt - 선택 개수이면서 방문 순서 정보를 가짐
     for idx 정보 사용 <- 앞선 정보를 기준으로 만들 수 있는 모든 경우의 수를 만들어 나가므로 제외
-        visit   <- 중복 방문 방지
-        dfs
-        visit cancle
+        dfs(cnt+1, i+1) // 중복 방문을 피하기 위한 i+1
 */
 #include <iostream>
 #include <algorithm>
 using namespace std;
 int n, m;
 int a[10];  // 입력 정보
-int chk[10];    // 방문 회피 목적
 int comb[10];   // 반복문 횟수 절감 목적
 void dfs(int cnt, int idx){
     if(cnt == m){
@@ -27,12 +24,8 @@ void dfs(int cnt, int idx){
         return;
     }
     for(int i = idx; i < n;i++){
-        if(chk[i] == 0){
-            chk[i] = 1;
-            comb[cnt] = a[i];
-            dfs(cnt+1, i+1);
-            chk[i] = 0;
-        }
+        comb[cnt] = a[i];
+        dfs(cnt+1, i+1);
     }
 }
 int main(){
