@@ -12,10 +12,9 @@ dfs(cnt, idx){
             if chk[i] == 1
                 cout
         return;
-    for(int i = idx; i <= n; i++) // 시작점(1)부터 dfs 함수에 포함
-        visit
-        dfs
-        visit cancle - 추후 재방문하기 위함
+    for(int i = idx; i <= n; i++) // 중복 방문을 피하기 위해 idx(이전의 i에 +1)부터
+        comb[cnt] = a[i];
+        dfs(cnt+1, i+1) // 중복 방문을 피하기 위한 i+1
 }
 main
     dfs(0, 1)
@@ -24,7 +23,6 @@ main
 #include <iostream>
 using namespace std;
 int n, m;
-int chk[10];
 int comb[10];
 void dfs(int cnt, int idx){
     if(cnt == m){
@@ -35,12 +33,8 @@ void dfs(int cnt, int idx){
         return;
     }
     for(int i = idx; i<=n;i++){
-        if(chk[i] == 0){
-            chk[i] = 1;
-            comb[cnt] = i;
-            dfs(cnt+1, i+1);
-            chk[i] = 0;
-        }
+        comb[cnt] = i;
+        dfs(cnt+1, i+1);
     }
 }
 int main(){
