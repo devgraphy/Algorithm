@@ -55,30 +55,30 @@
 
 ## Description of Commit Message
 
-- Solve myself(~): 스스로 해결한 알고리즘(접근법)
+- solve myself(~): 스스로 해결한 알고리즘(접근법)
+- solve ~: 이전에 발생한 이슈 해결(해결법)
+- refer to solution(~): 솔루션 참고한 알고리즘(접근법)
+- refer to hint(~): 일부 코드 또는 힌트 참고한 알고리즘(접근법)
 
-- Solve ~: 이전에 발생한 이슈 해결(해결법)
-
-- Refer to solution(~): 솔루션 참고한 알고리즘(접근법)
-
-- Refer to hint(~): 일부 코드 또는 힌트 참고한 알고리즘(접근법)
+---
 
 - counterexamples exist: 반례 존재
-
-- Time limit exceeded(~): 시간 초과(접근법)
-
-- Seg fault(~): 세그먼테이션 폴트
-
+- time limit exceeded(~): 시간 초과(접근법)
+- seg fault(~): 세그먼테이션 폴트
 - Invalid problem definition: 잘못된 문제 정의로 작성한 틀린 알고리즘
 
-- Improve ~: 복잡도 개선
+---
 
-- Refactoring(~): 리팩토링
+- improved performance: 시간 또는 공간 복잡도 개선, 최적화
 
-- Modifed ~ : 잘못된 부분, 오타 수정
+- refactor(~): 코드 리팩토링
 
-- Modify poicy: README 수정
+- docs: 문서 수정
 
-- Add description: 추가 설명
+- style: 코드 의미에 영향을 주지 않는 변경 사항
+
+- modified policy: README 수정
+
+- added description: 추가 설명
 
   
