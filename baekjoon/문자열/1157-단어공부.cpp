@@ -24,18 +24,23 @@ int main(){
     for(int i = 0; i < s.length(); i++){
         if(s[i] >= 'a' && s[i] <= 'z'){
             c[s[i] - 'a']++;
-            if(c[s[i] - 'a'] > max_cnt) max_cnt = c[s[i] - 'a'];
+            if(c[s[i] - 'a'] > max_cnt) {
+                max_cnt = c[s[i] - 'a'];
+                max_char = s[i] - 'a';
+            }
         }
         else if(s[i] >= 'A' && s[i] <= 'Z'){
             c[s[i] - 'A']++;
-            if(c[s[i] - 'A'] > max_cnt) max_cnt = c[s[i] - 'A'];
+            if(c[s[i] - 'A'] > max_cnt) {
+                max_cnt = c[s[i] - 'A'];
+                max_char = s[i] - 'A';
+            }
         }
         
     }
     // 알파벳 파악
     for(int i = 0; i < 26; i++){
         if(c[i] == max_cnt && !dup){
-            max_char = i;
             dup = true;
         }
         else if(c[i] == max_cnt && dup){
