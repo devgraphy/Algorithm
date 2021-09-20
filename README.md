@@ -76,12 +76,10 @@
 
 - refactor: 코드 리팩토링
 
-- docs: 문서 수정
+- docs: 잘못된 문제 정의 수정
 
 - style: 코드 의미에 영향을 주지 않는 변경 사항
 
 - modified policy: README 수정
-
-- added description: 추가 설명
 
   
