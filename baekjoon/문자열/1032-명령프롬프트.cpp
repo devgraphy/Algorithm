@@ -14,7 +14,7 @@ using namespace std;
 int main(){
     int n;
     string s[55];
-    bool prt = false;
+    char c;
     cin >> n;
     for(int i = 0; i < n; i++){
         cin >> s[i];
@@ -23,15 +23,13 @@ int main(){
     // 여러 문자열들의 같은 인덱스 위치 비교
     int len = s[0].length();
     for(int i = 0; i < len; i++){
-        prt = false;
+        c = s[0][i];
         for(int j = 0; j < n-1; j++){
             if(s[j][i] != s[j+1][i]){
-                cout << '?';
-                prt = true;// 이중 출력을 방지하기 위한 처리
+                c = '?';
                 break;
             } 
         }
-        if(prt == false)
-            cout << s[0][i];
+        cout << c;
     }
 }
