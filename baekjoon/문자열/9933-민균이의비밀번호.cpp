@@ -5,6 +5,7 @@
 */
 /* ----------<접근법>----------
 예시2처럼 뒤집은 문자열이 자기자신이 될 수 있으므로 자기자신을 포함하여 중복 조합을 구현한다.
+문자열 뒤집는 reverse() 이용하기
 */
 #include <iostream>
 #include <string>
@@ -14,14 +15,9 @@ string s[101];
 string comb[2];
 void dfs(int idx, int cnt){
     if(cnt == 2){
-        string rev="";
-        int len = comb[1].length();
-        // 뒤집기
-        for(int i = 0; i < len; i++){
-            rev+=comb[1][len-i-1];
-        }
-        if(comb[0] == rev){
-            cout << len << " " << comb[0][len/2];
+        reverse(comb[1].begin(), comb[1].end());
+        if(comb[0] == comb[1]){
+            cout << comb[0].length() << " " << comb[0][comb[0].length()/2];
         }
         return;
     }
