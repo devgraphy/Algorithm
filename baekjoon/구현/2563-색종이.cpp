@@ -13,26 +13,24 @@
 #include <iostream>
 using namespace std;
 int board[101][101];
+int cnt = 0;
 void coloring(int l, int b){
     for(int i = 0; i < 10; i++){
         for(int j = 0; j < 10; j++){
-            board[l+i][b+j] = 1;
+            if(board[l+i][b+j] == 0){
+                board[l+i][b+j] = 1;
+                cnt++;
+            }
         }
     }
 }
 
 int main(){
-    int n, a, b, cnt = 0;
+    int n, a, b;
     cin >> n;
     for(int i = 0; i < n; i++){
         cin >> a >> b;
         coloring(a, b);
-    }
-    // 검은색 영역의 총 개수 구하기
-    for(int i = 0; i <= 100; i++){
-        for(int j = 0; j <= 100; j++){
-            if(board[i][j] == 1) cnt++;
-        }
     }
     cout << cnt;
 }
