@@ -81,7 +81,7 @@ int main(){
             }
             
         }
-        else if(tempyy > minbirth[2]){
+        else if(tempyy > maxbirth[2]){
             maxbirth[0] = tempdd;
             maxbirth[1] = tempmm;
             maxbirth[2] = tempyy;
