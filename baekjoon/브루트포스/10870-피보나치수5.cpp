@@ -20,9 +20,14 @@
 */
 #include <iostream>
 using namespace std;
+int mem[100];
 int fib(int n){
     if(n == 0 || n == 1) return n;
-    return fib(n-2) + fib(n-1);
+    else if(mem[n] != 0){
+        return mem[n];
+    }
+    else
+        return mem[n] = fib(n-2) + fib(n-1);
 }
 int main(){
     int n;
