@@ -16,7 +16,7 @@
 using namespace std;
 int main(){
     string str;
-    stack<char> st;
+    stack<int> st;
     cin >> str;
     int result = 0;
     int strlen = str.length();
