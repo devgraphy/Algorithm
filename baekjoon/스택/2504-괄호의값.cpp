@@ -30,13 +30,18 @@ int main(){
         else if(str[i] == ')'){
             // ( 나올 때까지 모든 값 합함
             int temp = 0;
-            while(st.top() != '('){
+            while(!st.empty() && st.top() != '('){
                 if(st.top() == '['){  // 잘못 매칭된 경우
                     cout << 0;
                     return 0;
                 }                
                 temp+=st.top();
                 st.pop();
+            }
+            // 빈 스택 접근 방지
+            if(st.empty()){
+                cout << 0;
+                return 0;
             }
             st.pop();
             if(temp == 0) temp = 1;
@@ -45,13 +50,18 @@ int main(){
         else if(str[i] == ']'){
             // ( 나올 때까지 모든 값 합함
             int temp = 0;
-            while(st.top() != '['){
+            while(!st.empty() && st.top() != '['){
                 if(st.top() == '('){  // 잘못 매칭된 경우
                     cout << 0;
                     return 0;
                 }                
                 temp+=st.top();
                 st.pop();
+            }
+            // 빈 스택 접근 방지
+            if(st.empty()){
+                cout << 0;
+                return 0;
             }
             st.pop();
             if(temp == 0) temp = 1; // 아무 것도 더해진 게 없다면
