@@ -12,7 +12,7 @@ M과 N 사이의 수를 순회
 #include <iostream>
 using namespace std;
 int main(){
-    int m, n, sum = 0, cnt = 0;
+    int m, n, sum = 0;
     int minval = 2147000000;
     bool prime;
     cin >> m >> n;
@@ -30,12 +30,11 @@ int main(){
         }
         if(prime == true){
             sum += i;
-            cnt++;
             if(minval > i)
                 minval = i;
         }       
     }
-    if(cnt == 0)
+    if(!sum)
         cout << -1;
     else
         cout << sum << '\n' << minval;
