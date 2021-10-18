@@ -65,6 +65,7 @@
 - solve <이슈>: 이전에 발생한 이슈 해결(해결법)
 - refer to solution: 솔루션 참고한 알고리즘(접근법)
 - refer to hint: 일부 코드 또는 힌트 참고한 알고리즘(접근법)
+- finded counterexamples: 반례 찾음(원인) - 여전히 문제는 미해결일 때
 
 ---
 
