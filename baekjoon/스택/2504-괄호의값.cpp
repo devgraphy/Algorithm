@@ -3,19 +3,12 @@
 입력: 괄호 문자열(최대 30)
 출력: 괄호식 계산값(입력이 올바르지 못한 괄호열이면 반드시 0 출력)
 */
-/* ----------<틀린 접근법>----------
+/* ----------<접근법>----------
 괄호 문제이므로 스택 자료구조를 사용
-올바르게 닫을 때마다 값 계산
---> O(N)
+실마리: 더하기와 곱하기를 구분하기
 */
-/* ----------<틀린 알고리즘>----------
-문자열 순회
-    (, [ 일때 push
-    ), ] 일때 스택의 top과 비교
-        입력이 ), 스택의 top이 (이면 sum+=2, pop
-        입력이 ], 스택의 top이 [이면 sum+=3, pop
-        그 외이면 0 출력하고 종료
-sum 출력
+/* ----------<알고리즘>----------
+
 */
 #include <iostream>
 #include <string>
@@ -25,27 +18,50 @@ int main(){
     string str;
     stack<char> st;
     cin >> str;
-    int sum = 0;
+    int result = 0;
     int strlen = str.length();
     for(int i = 0; i < strlen; i++){
-        if(str[i] == '(' || str[i] == '[')
+        if(str[i] == '('){
             st.push(str[i]);
+        }
+        else if(str[i] == '['){
+            st.push(str[i]);
+        }
         else if(str[i] == ')'){
-            if(st.top() == '('){
-                sum+=2;
+            // ( 나올 때까지 모든 값 합함
+            int temp = 0;
+            while(st.top() != '('){
+                if(st.top() == '['){  // 잘못 매칭된 경우
+                    cout << 0;
+                    return 0;
+                }                
+                temp+=st.top();
                 st.pop();
             }
+            st.pop();
+            if(temp == 0) temp = 1;
+            st.push(temp*2);  // 계산된 값을 그대로 char형 스택에 push, 추후 타입 캐스팅만 해서 출력<-두 자리 이상이기 때문
         }
         else if(str[i] == ']'){
-            if(st.top() == '['){
-                sum+=3;
+            // ( 나올 때까지 모든 값 합함
+            int temp = 0;
+            while(st.top() != '['){
+                if(st.top() == '('){  // 잘못 매칭된 경우
+                    cout << 0;
+                    return 0;
+                }                
+                temp+=st.top();
                 st.pop();
             }
-        }
-        else{
-            cout << 0;
-            return 0;
+            st.pop();
+            if(temp == 0) temp = 1; // 아무 것도 더해진 게 없다면
+            st.push(temp*3);  // 계산된 값을 그대로 char형 스택에 push, 추후 타입 캐스팅만 해서 출력<-두 자리 이상이기 때문
         }
     }
-    cout << sum;
+    // 스택에 쌓인 숫자들 모두 합하기(같은 레벨의 괄호값들이 쌓인 경우)
+    while(!st.empty()){
+        result += st.top();
+        st.pop();
+    }
+    cout << result;
 }
