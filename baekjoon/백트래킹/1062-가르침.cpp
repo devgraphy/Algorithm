@@ -61,11 +61,17 @@ int main(){
     cin >> n >> k;
     
     // 문자열마다 접두사 접미사 잘라서 word 벡터에 추가
+    string tmp;
     for(int i = 0; i < n; i++){
         cin >> strtmp;
         strtmplen = strtmp.length()-4;
-        strtmp = strtmp.substr(4, strtmplen-4);
-        word.push_back(strtmp);
+        //strtmp = strtmp.substr(4, strtmplen-4);
+        tmp = "";
+        for(int j = 4; j < 4 + strtmplen-4; j++){
+            if(!chk[strtmp[j]-'a'])
+                tmp+=strtmp[j];
+        }
+        word.push_back(tmp);
     }
 
     // 문제 제약 조건
