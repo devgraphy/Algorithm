@@ -80,6 +80,7 @@
 
 ---
 
+- insufficient approach: 부족한 접근법(backlog 추가 대상)
 - counterexamples exist: 반례 존재(반례 특징)
 - time limit exceeded: 시간 초과(접근법)
 - seg fault: 세그먼테이션 폴트
